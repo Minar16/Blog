@@ -1,8 +1,18 @@
-{{% extends "bootstrap/base.html" %}}
-{{% import "bootstrap/wtf.html" as wtf %}}
-
-{{% blockcontent %}}
-    <h1>What's your name?!</h1>
+{% extends 'base.html' %}
+ 
+{% block content %}
+    <h1>Login</h1>
     <br/>
+    <form method="POST">
+       
+        {{ form.username.label(class="form-label") }}
+        {{ form.username(class="form-control") }}
+        <br/>
+        {{ form.password_hash.label(class="form-label") }}
+        {{ form.password_hash(class="form-control") }}
+        <br/>
+        {{ form.submit(class="btn btn-secondary") }}
 
-{{% endblock %}}
+    </form>
+
+{% endblock %}

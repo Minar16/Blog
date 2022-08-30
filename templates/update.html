@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if username %}
+        <h1>User updated!!</h1>
+        <br/> <br/> <br/>
+
+{% for our_user in our_users %}
+
+    {{ our_user.id }}. {{ our_user.username }} - {{ our_user.email }} - {{ our_user.password_hash }}
+
+    <br/><br/>
+
+{% endfor %}
+
+        
+{% else %}
+    <h1>Update User</h1>
+    <br/>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+
+        {{ form.username.label(class="form-label") }}
+        {{ form.username(class="form-control", value=name_to_update.username) }}
+        <br/>
+        {{ form.email.label(class="form-label") }}
+        {{ form.email(class="form-control", value=name_to_update.email) }}
+        <br/>
+        {{ form.password_hash.label(class="form-label") }}
+        {{ form.password_hash(class="form-control") }}
+        <br/>
+        {{ form.submit(class="btn btn-secondary") }}
+    </form>
+
+    <br/><br/><br/>
+
+{% endif %}
+
+{% endblock %}
